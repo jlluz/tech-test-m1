@@ -17,7 +17,7 @@ namespace TechTestM1.BusinessLogic.DataModels
         }
 
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         public Sku() { }
 
