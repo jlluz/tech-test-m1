@@ -1,9 +1,14 @@
-﻿using TechTestM1.BusinessLogic.DataModels;
+﻿using System.Collections.Generic;
+
+using TechTestM1.BusinessLogic.DataModels;
 
 namespace TechTestM1
 {
     public class CalcAggregator
     {
+        private ShoppingCart shoppingCart;
+        private List<PromotionA> promotions;
+
         public static decimal CalcOrderValue(ShoppingCart shoppingCart, params object[] promotions)
         {
             decimal retVal = 0;

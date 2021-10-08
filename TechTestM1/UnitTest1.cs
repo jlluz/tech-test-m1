@@ -12,32 +12,52 @@ namespace TechTestM1
 
         public UnitTest1()
         {
-            var promotionA = new PromotionA();
-            promotionA.Sku.Id = 'A';
-            promotionA.Sku.Price = 50;
-            promotionA.Qty = 3;
-            promotionA.BulkPrice = 130;
+            var promotionA = new PromotionA
+            {
+                Sku = new Sku
+                {
+                    Id = 'A',
+                    Price = 50
+                },
+                Qty = 3,
+                BulkPrice = 130
+            };
             this.Promotions.Add(promotionA);
 
-            var promotionB = new PromotionA();
-            promotionB.Sku.Id = 'B';
-            promotionB.Sku.Price = 30;
-            promotionB.Qty = 2;
-            promotionB.BulkPrice = 45;
+            var promotionB = new PromotionA
+            {
+                Sku = new Sku
+                {
+                    Id = 'B',
+                    Price = 30
+                },
+                Qty = 2,
+                BulkPrice = 45
+            };
             this.Promotions.Add(promotionB);
 
-            var promotionC = new PromotionA();
-            promotionC.Sku.Id = 'C';
-            promotionC.Sku.Price = 20;
-            promotionC.Qty = 1;
-            promotionC.BulkPrice = 20;
+            var promotionC = new PromotionA
+            {
+                Sku = new Sku
+                {
+                    Id = 'C',
+                    Price = 20
+                },
+                Qty = 1,
+                BulkPrice = 20
+            };
             this.Promotions.Add(promotionC);
 
-            var promotionD = new PromotionA();
-            promotionD.Sku.Id = 'D';
-            promotionD.Sku.Price = 15;
-            promotionD.Qty = 1;
-            promotionD.BulkPrice = 15;
+            var promotionD = new PromotionA
+            {
+                Sku = new Sku
+                {
+                    Id = 'D',
+                    Price = 15
+                },
+                Qty = 1,
+                BulkPrice = 15
+            };
             this.Promotions.Add(promotionD);
         }
 
@@ -84,6 +104,8 @@ namespace TechTestM1
             };
 
             shoppingCart.CartItems.Add(orderItemC);
+
+            Assert.Equal(100, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
         }
     }
 }
