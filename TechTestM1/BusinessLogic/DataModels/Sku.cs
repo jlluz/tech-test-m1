@@ -16,7 +16,6 @@ namespace TechTestM1.BusinessLogic.DataModels
             }
         }
 
-
         public decimal Price { get; set; }
 
         public Sku() { }
