@@ -2,6 +2,8 @@
 
 using TechTestM1.BusinessLogic.DataModels;
 
+using Xunit;
+
 namespace TechTestM1
 {
     public class UnitTest1
@@ -39,5 +41,49 @@ namespace TechTestM1
             this.Promotions.Add(promotionD);
         }
 
+        [Fact]
+        public void TestScenarioA()
+        {
+            var shoppingCart = new ShoppingCart();
+
+            var orderItemA = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'A',
+                    Price = 50
+                },
+                Qty = 1,
+
+            };
+
+            shoppingCart.CartItems.Add(orderItemA);
+
+            var orderItemB = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'B',
+                    Price = 30
+                },
+                Qty = 1,
+
+            };
+
+            shoppingCart.CartItems.Add(orderItemB);
+
+            var orderItemC = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'C',
+                    Price = 20
+                },
+                Qty = 1,
+
+            };
+
+            shoppingCart.CartItems.Add(orderItemC);
+        }
     }
 }
