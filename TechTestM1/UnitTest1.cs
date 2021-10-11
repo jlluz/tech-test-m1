@@ -25,6 +25,7 @@ namespace TechTestM1
                 BulkPrice = 130,
                 Status = true // promotion is active
             };
+
             this.Promotions.Add(promotionA);
 
             var promotionB = new PromotionA
@@ -38,6 +39,7 @@ namespace TechTestM1
                 BulkPrice = 45,
                 Status = true
             };
+
             this.Promotions.Add(promotionB);
 
             var promotionC = new PromotionA
@@ -51,6 +53,7 @@ namespace TechTestM1
                 BulkPrice = 20,
                 Status = true
             };
+
             this.Promotions.Add(promotionC);
 
             var promotionD = new PromotionA
@@ -64,6 +67,7 @@ namespace TechTestM1
                 BulkPrice = 15,
                 Status = true
             };
+
             this.Promotions.Add(promotionD);
         }
 
@@ -83,6 +87,7 @@ namespace TechTestM1
                 Qty = 1,
 
             };
+
             shoppingCart.CartItems.Add(orderItemA);
 
             var orderItemB = new OrderItem
@@ -94,6 +99,7 @@ namespace TechTestM1
                 },
                 Qty = 1,
             };
+
             shoppingCart.CartItems.Add(orderItemB);
 
             var orderItemC = new OrderItem
@@ -106,6 +112,7 @@ namespace TechTestM1
                 Qty = 1,
 
             };
+
             shoppingCart.CartItems.Add(orderItemC);
 
             Assert.Equal(100, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
@@ -126,6 +133,7 @@ namespace TechTestM1
                 },
                 Qty = 5,
             };
+
             shoppingCart.CartItems.Add(orderItemA);
 
             var orderItemB = new OrderItem
@@ -137,6 +145,7 @@ namespace TechTestM1
                 },
                 Qty = 5,
             };
+
             shoppingCart.CartItems.Add(orderItemB);
 
             var orderItemC = new OrderItem
@@ -149,6 +158,7 @@ namespace TechTestM1
                 Qty = 1,
                 BulkUnitPrice = 28
             };
+
             shoppingCart.CartItems.Add(orderItemC);
 
             Assert.Equal(370, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
@@ -169,6 +179,7 @@ namespace TechTestM1
                 },
                 Qty = 3,
             };
+
             shoppingCart.CartItems.Add(orderItemA);
 
             var orderItemB = new OrderItem
@@ -180,6 +191,7 @@ namespace TechTestM1
                 },
                 Qty = 5,
             };
+
             shoppingCart.CartItems.Add(orderItemB);
 
             var orderItemC = new OrderItem
@@ -192,6 +204,7 @@ namespace TechTestM1
                 Qty = 1,
                 BulkUnitPrice = -1
             };
+
             shoppingCart.CartItems.Add(orderItemC);
 
             var orderItemD = new OrderItem
