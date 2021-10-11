@@ -12,6 +12,8 @@ namespace TechTestM1
 
         public UnitTest1()
         {
+            Promotions = new List<PromotionA>();
+
             var promotionA = new PromotionA
             {
                 Sku = new Sku
@@ -20,7 +22,8 @@ namespace TechTestM1
                     Price = 50
                 },
                 Qty = 3,
-                BulkPrice = 130
+                BulkPrice = 130,
+                Status = true // promotion is active
             };
             this.Promotions.Add(promotionA);
 
@@ -32,7 +35,8 @@ namespace TechTestM1
                     Price = 30
                 },
                 Qty = 2,
-                BulkPrice = 45
+                BulkPrice = 45,
+                Status = true
             };
             this.Promotions.Add(promotionB);
 
@@ -44,7 +48,8 @@ namespace TechTestM1
                     Price = 20
                 },
                 Qty = 1,
-                BulkPrice = 20
+                BulkPrice = 20,
+                Status = true
             };
             this.Promotions.Add(promotionC);
 
@@ -56,7 +61,8 @@ namespace TechTestM1
                     Price = 15
                 },
                 Qty = 1,
-                BulkPrice = 15
+                BulkPrice = 15,
+                Status = true
             };
             this.Promotions.Add(promotionD);
         }

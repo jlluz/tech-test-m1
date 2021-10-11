@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 
 using TechTestM1.BusinessLogic.DataModels;
 
@@ -6,10 +7,8 @@ namespace TechTestM1
 {
     public class CalcAggregator
     {
-        private ShoppingCart shoppingCart;
-        private List<PromotionA> promotions;
 
-        public static decimal CalcOrderValue(ShoppingCart shoppingCart, params object[] promotions)
+        public static decimal CalcOrderValue(ShoppingCart shoppingCart, IEnumerable<PromotionA> promotions)
         {
             decimal retVal = 0;
 
@@ -21,7 +20,7 @@ namespace TechTestM1
                     {
                         foreach (var promotion in promotions)
                         {
-                            if (promotion is PromotionA)
+                            if (promotion is PromotionA promotiona)
                             {
                                 if (((PromotionA)promotion).Status)
                                 {
@@ -32,28 +31,32 @@ namespace TechTestM1
                                         int xQty = cartitem.Qty / pQty;
                                         int rQty = cartitem.Qty % pQty;
 
-                                        switch (cartitem.Sku.Id)
+                                        if (promotion.Sku.Id == cartitem.Sku.Id)
                                         {
-                                            case 'A':
-                                            case 'B':
-                                                retVal += (xQty * pQty) + (rQty * cartitem.Sku.Price);
-                                                break;
+                                            switch (promotion.Sku.Id)
+                                            {
+                                                case 'A':
+                                                case 'B':
+                                                    retVal += (xQty * promotion.Sku.Price) + (rQty * cartitem.Sku.Price);
+                                                    break;
 
-                                            case 'C':
-                                            case 'D':
-                                                if (cartitem.BulkUnitPrice > 0)
-                                                {
-                                                    retVal += (xQty * pQty) + (rQty * cartitem.BulkUnitPrice);
-                                                }
-                                                else
-                                                {
-                                                    retVal += (xQty * pQty) + (rQty * cartitem.Sku.Price);
-                                                }
-                                                break;
+                                                case 'C':
+                                                case 'D':
+                                                    if (cartitem.BulkUnitPrice > 0)
+                                                    {
+                                                        retVal += (xQty * promotion.Sku.Price) + (rQty * cartitem.BulkUnitPrice);
+                                                    }
+                                                    else
+                                                    {
+                                                        retVal += (xQty * promotion.Sku.Price) + (rQty * cartitem.Sku.Price);
+                                                    }
+                                                    break;
 
-                                            default:
-                                                break;
+                                                default:
+                                                    break;
+                                            }
                                         }
+
                                     }
                                 }
                             }
