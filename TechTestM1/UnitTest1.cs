@@ -67,6 +67,7 @@ namespace TechTestM1
             this.Promotions.Add(promotionD);
         }
 
+
         [Fact]
         public void TestScenarioA()
         {
@@ -82,7 +83,6 @@ namespace TechTestM1
                 Qty = 1,
 
             };
-
             shoppingCart.CartItems.Add(orderItemA);
 
             var orderItemB = new OrderItem
@@ -93,9 +93,7 @@ namespace TechTestM1
                     Price = 30
                 },
                 Qty = 1,
-
             };
-
             shoppingCart.CartItems.Add(orderItemB);
 
             var orderItemC = new OrderItem
@@ -108,10 +106,52 @@ namespace TechTestM1
                 Qty = 1,
 
             };
-
             shoppingCart.CartItems.Add(orderItemC);
 
             Assert.Equal(100, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
+        }
+
+
+        [Fact]
+        public void TestScenarioB()
+        {
+            var shoppingCart = new ShoppingCart();
+
+            var orderItemA = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'A',
+                    Price = 50
+                },
+                Qty = 5,
+            };
+            shoppingCart.CartItems.Add(orderItemA);
+
+            var orderItemB = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'B',
+                    Price = 30
+                },
+                Qty = 5,
+            };
+            shoppingCart.CartItems.Add(orderItemB);
+
+            var orderItemC = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'C',
+                    Price = 20
+                },
+                Qty = 1,
+                BulkUnitPrice = 28
+            };
+            shoppingCart.CartItems.Add(orderItemC);
+
+            Assert.Equal(370, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
         }
     }
 }

@@ -37,18 +37,18 @@ namespace TechTestM1
                                             {
                                                 case 'A':
                                                 case 'B':
-                                                    retVal += (xQty * promotion.Sku.Price) + (rQty * cartitem.Sku.Price);
+                                                    retVal += (xQty * promotion.BulkPrice) + (rQty * cartitem.Sku.Price);
                                                     break;
 
                                                 case 'C':
                                                 case 'D':
                                                     if (cartitem.BulkUnitPrice > 0)
                                                     {
-                                                        retVal += (xQty * promotion.Sku.Price) + (rQty * cartitem.BulkUnitPrice);
+                                                        retVal += (xQty * promotion.BulkPrice) + (rQty * cartitem.BulkUnitPrice);
                                                     }
                                                     else
                                                     {
-                                                        retVal += (xQty * promotion.Sku.Price) + (rQty * cartitem.Sku.Price);
+                                                        retVal += (xQty * promotion.BulkPrice) + (rQty * cartitem.Sku.Price);
                                                     }
                                                     break;
 
