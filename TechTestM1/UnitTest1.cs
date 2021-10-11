@@ -153,5 +153,60 @@ namespace TechTestM1
 
             Assert.Equal(370, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
         }
+
+
+        [Fact]
+        public void TestScenarioC()
+        {
+            var shoppingCart = new ShoppingCart();
+
+            var orderItemA = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'A',
+                    Price = 50
+                },
+                Qty = 3,
+            };
+            shoppingCart.CartItems.Add(orderItemA);
+
+            var orderItemB = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'B',
+                    Price = 30
+                },
+                Qty = 5,
+            };
+            shoppingCart.CartItems.Add(orderItemB);
+
+            var orderItemC = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'C',
+                    Price = 20
+                },
+                Qty = 1,
+                BulkUnitPrice = -1
+            };
+            shoppingCart.CartItems.Add(orderItemC);
+
+            var orderItemD = new OrderItem
+            {
+                Sku = new Sku
+                {
+                    Id = 'D',
+                    Price = 15
+                },
+                Qty = 1,
+                BulkUnitPrice = 30
+            };
+            shoppingCart.CartItems.Add(orderItemD);
+
+            Assert.Equal(280, CalcAggregator.CalcOrderValue(shoppingCart, Promotions));
+        }
     }
 }

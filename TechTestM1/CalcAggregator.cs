@@ -44,11 +44,15 @@ namespace TechTestM1
                                                 case 'D':
                                                     if (cartitem.BulkUnitPrice > 0)
                                                     {
-                                                        retVal += (xQty * promotion.BulkPrice) + (rQty * cartitem.BulkUnitPrice);
+                                                        retVal += (xQty * cartitem.BulkUnitPrice) + (rQty * cartitem.Sku.Price);
                                                     }
                                                     else
                                                     {
-                                                        retVal += (xQty * promotion.BulkPrice) + (rQty * cartitem.Sku.Price);
+                                                        if (cartitem.BulkUnitPrice != -1)
+                                                        {
+                                                            retVal += (xQty * promotion.BulkPrice) + (rQty * cartitem.Sku.Price);
+
+                                                        }
                                                     }
                                                     break;
 
